@@ -34,3 +34,9 @@ export function hideElement(htmlClass){
 export function showElement(htmlClass){
   document.querySelector(htmlClass).classList.add("show");
 }
+
+export function cartHasItems() {
+  if (getLocalStorage("so-cart") != null) {
+    return true;
+  }
+}
