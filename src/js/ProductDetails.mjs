@@ -41,6 +41,7 @@ function productDetailsTemplate(product) {
 
     <p class="product-card__price">$${product.FinalPrice}</p>    
 
+  // Add discount to product detail pages
     <p class="product-card__originalprice"> <span style="text-decoration: line-through;"> Was: $${product.SuggestedRetailPrice}</p>
     <p class="product-card__discount">Discount: $${(product.SuggestedRetailPrice - product.FinalPrice).toFixed(2)}</p>            
 
