@@ -1,5 +1,8 @@
+import { loadHeaderFooter } from "./utils.mjs";
 import fs from 'fs';
 import path from 'path';
+
+loadHeaderFooter();
 
 export default class alert {
     constructor(filePath) {
@@ -7,20 +10,20 @@ export default class alert {
     }
 
     readAlert(keyName) {
-      
-      // section where i append the data of the alert
-      // let div_main = document.getElementById("alert-section");
-      // section where i append the data of the alert
+
+        // section where i append the data of the alert
+        // let div_main = document.getElementById("alert-section");
+        // section where i append the data of the alert
 
         fs.readFile(this.filePath, 'utf8', (err, data) => {
             if (err) {
                 console.error('Error reading file:', err);
                 return;
             }
-            
+
             try {
                 const jsonData = JSON.parse(data);
-                
+
                 // Iterate over the data if it's an array
                 if (Array.isArray(jsonData)) {
                     jsonData.forEach(alert => {
@@ -37,7 +40,7 @@ export default class alert {
                         console.log('---------------------------');
                         console.log(`Parsed JSON data for key "${keyName}":`, alert[keyName]);
                     });
-                } 
+                }
             } catch (parseError) {
                 console.error('Error parsing JSON:', parseError);
             }
@@ -52,7 +55,7 @@ const __dirname = path.dirname(__filename);
 const filePath = path.resolve(__dirname, '../alerts.json');
 
 const jsonReader = new alert(filePath);
-jsonReader.readAlert('message'); 
+jsonReader.readAlert('message');
 
 // Specify the key name here
 
